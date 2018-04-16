@@ -1,0 +1,86 @@
+/* CUSTOM_SIZE = 65 */
+/* ###################################################################### */
+/* The toggle buttons I'm using */
+
+/* OFF button */
+.toggle-button {
+    background-color: white; 
+    margin: 6 0;                    /* Vertical, Horizontal */
+    border-radius: 50px;
+    border: 2px solid #D0D0D0; 
+    height: 65px;                   /* "Rectangle's" height  */     /* = CUSTOM_SIZE */
+    cursor: pointer;
+    width: 130px;                   /* "Rectangle's" width */       /* = 2*CUSTOM_SIZE */
+    position: relative;
+    display: inline-block;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+
+.toggle-button button {
+    cursor: pointer;
+    outline: 0;
+    display:block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 100%;
+    width:  65px;                   /* Circle, OFF button */    /* = CUSTOM_SIZE */
+    height: 65px;                   /* Circle, OFF button */    /* = CUSTOM_SIZE */
+    background-color: white;
+    border: 2px solid #D0D0D0;
+    transition: left 0.5s;
+}
+
+/* ON button */
+.toggle-button-selected {
+    background-color: #83B152;
+    border: 2px solid #7DA652;
+}
+
+.toggle-button-selected button {
+    left: 66px;                                                 /* = CUSTOM_SIZE +1 */
+    top: 1px;
+    margin: 0;
+    border: none;
+    width:  63px;                   /* Circle, ON button */     /* = CUSTOM_SIZE -2 */
+    height: 63px;                   /* Circle, ON button */     /* = CUSTOM_SIZE -2 */
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
+/* TRANSITION button */
+.toggle-button-pressed {
+    border: 2px solid #FFCC00;
+}
+
+.toggle-button-pressed button {
+    border: 2px solid #FFCC00;
+}
+
+/* Restart Service button */
+.restartButton {
+    font-size:35px;
+    height:65px;                            /* = CUSTOM_SIZE */
+    width:65px;                             /* = CUSTOM_SIZE */
+    background-color: #83B152;
+    border: 2px solid #7DA652;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+}
+
+.restartButton-disabled {
+    background-color: white;
+    border: 2px solid #D0D0D0;
+    transition 0.5s;
+}
+
+.restartButton-pressed {
+    background-color: #FFCC00;
+    border: 2px solid #FFCC00;
+    transition 0.5s;
+}
+
+/* ###################################################################### */

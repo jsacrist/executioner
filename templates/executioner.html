@@ -1,0 +1,115 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <title>{{gethostname()}} | The Executioner!</title>
+<!--    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+-->
+    <script type="text/javascript" src="static/js/jquery.min.js"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="static/css/services.css">
+    <link rel="stylesheet" href="static/css/commands.css">
+    <script type="text/javascript" src="static/js/services.js"></script>
+    <script type="text/javascript" src="static/js/commands.js"></script>
+  </head>
+  
+  <body>
+
+    <p><a href="/"><h1>[{{gethostname()}}]</h1></a></p>
+    <ul class="tab">
+      <!-- Loop Start: TAB HEADERS -->
+      {%- for my_tab in all_tabs %}
+      <li> <a href="javascript:void(0)" class="tablinks" 
+            {%- if my_tab.active == True %} id="defaultOpen"
+            {%- endif %} onclick="openTab(event, '{{my_tab.name}}')">{{my_tab.name}}</a> </li>
+      {%- endfor %}
+      <!-- Loop Stop: TAB HEADERS -->
+    </ul>
+
+    <!-- Loop Start: TABS -->
+    {%- for my_tab in all_tabs %}
+      {%- if my_tab.tab_type == "servicetab" %}
+        <div id="{{my_tab.name}}" class="tabContent">
+          <table><tr><th>Status</th> <th></th> <th>Service</th></tr>
+          <!-- Loop Start: SERVICES -->
+          {%- for my_service in my_tab.elements %}
+            <tr>
+              <td>
+                <div id="div-{{my_service.name}}" class="divService" valueOnLoad="{{my_service.get_status()}}">
+                  <button id="tBtn-{{my_service.name}}" class="serviceButton" name="{{my_service.GET_KEY}}" value="{{my_service.name}}">
+                  </button>
+                </div>
+              </td>
+              <td>
+                <div class="divRService" valueOnLoad="{{my_service.get_status()}}">
+                  <button id="rBtn-{{my_service.name}}" class="restartButton" name="{{my_service.GET_KEY}}" value="{{my_service.name}}">
+                  </button>
+                </div>
+              </td>
+              <td>{{my_service.name}}</td>
+            </tr>
+          {% endfor -%}
+          <!-- Loop Stop: SERVICES -->
+          </table>
+        </div>
+
+      {%- elif my_tab.tab_type == "commandtab" %}
+        <div id="{{my_tab.name}}" class="tabContent">
+          <table><tr><th>Name</th><th>Clr/Run</th><th>Output</th></tr>
+          <!-- Loop Start: SERVICES -->
+          {%- for my_command in my_tab.elements %}
+            <tr>
+              <td>
+                <div class="tooltip">
+                  {{my_command.name}}
+                  <span class="tooltiptext">
+                    {{my_command.cmdline}}
+                  </span>
+                </div>
+              </td>
+              <td>
+                <table><tr><td style="border:0px">
+                  <button id="clrCmdBtn-{{my_command.name}}" class="clearCommandButton clearCommandButton-disabled" name="{{my_command.GET_KEY}}" value="{{my_command.name}}" disabled>
+                    &#10008;
+                  </button>
+                </td><td style="border:0px">
+                  <button id="cmdBtn-{{my_command.name}}" class="commandButton" name="{{my_command.GET_KEY}}" value="{{my_command.name}}">
+                    &#9654;
+                  </button>
+                </td></tr></table>
+              </td>
+              <td style="font-size: 12px;">
+                <div id="cmdOutput-{{my_command.name}}">
+                </div>
+              </td>
+            </tr>
+          {% endfor -%}
+          <!-- Loop Stop: SERVICES -->
+          </table>
+        </div>
+      {% endif -%}
+    {% endfor -%}
+    <!-- Loop Stop: TABS -->
+
+    <script type="text/javascript" src="static/js/open_tab.js"></script>
+
+    <script>
+      $('.divService').each(function(i, myDiv) {
+        var valueOnLoad = myDiv.getAttribute("valueOnLoad");
+        var tButton = myDiv.children[0];
+        var selectedService = tButton.value;
+        var rButton = document.getElementById("rBtn-" + selectedService);
+        updateToggleNRestartBtns(valueOnLoad, myDiv, rButton);
+      });
+    </script>
+
+    <script>
+      $('.clearCommandButton').each(function(i, myClrBtn) {
+        var clrButton = document.getElementById("clrCmdBtn-" + myClrBtn.value);
+        refresh_command_button(myClrBtn.value);
+      });
+    </script>
+
+  </body>
+</html>

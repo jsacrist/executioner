@@ -1,0 +1,91 @@
+/* CUSTOM_SIZE = 65 */
+/* ###################################################################### */
+/* General CSS */
+table {
+    font-family: "Courier New", sans-serif;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td, th {
+    border: 1px solid #DDDDDD;
+    text-align: left;
+    padding: 0px 5px;
+    font-size: 35px;
+}
+
+tr:nth-child(even) {
+    background-color: #DDDDDD;
+}
+
+.center {
+    text-align:center;
+}
+
+body {font-family: "Courier New", sans-serif;}
+
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #CCC;
+    background-color: #f1f1f1;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* TAB titles */
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 15px 15px; 
+    text-decoration: none;
+    transition: 0.5s;
+    font-size: 20px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {
+    background-color: #DDD;
+}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {
+    background-color: #CCC;
+}
+
+/* TAB content */
+.tabContent {
+    display: none;
+    padding: 0 0;
+    border: 1px solid #CCC;
+    border-top: none;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 600px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+

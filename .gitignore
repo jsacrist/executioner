@@ -1,0 +1,7 @@
+.idea
+*.swp
+
+tabs/*
+!tabs/raspberrypi.xml
+
+scripts/custom/*

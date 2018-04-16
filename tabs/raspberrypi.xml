@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<executioner_data>
+    <servicetab caption="OpenVPN">
+    	<service name="openvpn@vpn1">
+            <conflict name="openvpn@vpn2"/>
+        </service>
+
+    	<service name="openvpn@vpn2">
+            <conflict name="openvpn@vpn1"/>
+        </service>
+    </servicetab>
+
+    <commandtab caption="Info">
+        <command caption="IPs" line='scripts/ips.sh' />
+        <command caption="MACs" line='arp -a' />
+        <command caption="SysInfo" line='scripts/info.sh' />
+        <command caption="Ping" line="scripts/ping.sh" />
+        <command caption="Kitty" line="scripts/kitty.sh" />
+    </commandtab>
+
+    <commandtab caption="apt-get">
+        <command caption="update" line='apt-get update' />
+        <command caption="upgrade" line='apt-get upgrade -y' />
+        <command caption="autoremove" line='apt-get autoremove -y' />
+        <command caption="dist-upgrade" line='apt-get dist-upgrade -y' />
+    </commandtab>
+
+    <commandtab caption="Power">
+        <command caption="Restart executioner" line="systemctl restart executioner" />
+        <command caption="Restart system" line='shutdown -r now' />
+        <command caption="Poweroff system"    line='shutdown -h now' />
+    </commandtab>
+
+</executioner_data>

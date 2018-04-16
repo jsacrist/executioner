@@ -1,0 +1,35 @@
+/* CUSTOM_SIZE = 65 */
+/* ###################################################################### */
+.commandButton {
+    font-size:35px;
+    height:65px;                                    /* CUSTOM_SIZE */
+    width:65px;                                     /* CUSTOM_SIZE */
+    background-color: #83B152;
+    border: 2px solid #7DA652;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+}
+
+.clearCommandButton {
+    font-size:35px;
+    height:65px;                                    /* CUSTOM_SIZE */
+    width:65px;                                     /* CUSTOM_SIZE */
+    background-color: #AA2020;
+    border: 2px solid #882020;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+}
+
+.clearCommandButton-disabled {
+    background-color: white;
+    border: 2px solid #D0D0D0;
+    transition 0.5s;
+}
+
+.commandButton-running {
+    background-color: #FFCC00;
+    border: 2px solid #D0D0D0;
+    transition 0.5s;
+}

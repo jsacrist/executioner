@@ -1,0 +1,9 @@
+[Unit]
+Description=Web interface to control other services and run custom scripts
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/YOURUSERNAME/executioner/executioner.py
+
+[Install]
+WantedBy=multi-user.target
